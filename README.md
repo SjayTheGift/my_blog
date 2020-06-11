@@ -8,6 +8,8 @@ A blog system based on `python3.8` and `Django3.0`.
 ## Main Features:
 - All Auth features Login, Logout, Register, Verify User, Password Forgot.
 - User is allowed to do CRUD operations on blog-post.
+- User is able to leave comment on site.
+- Admin can check user comments and approve them.
 
 ## Installation
 
@@ -46,9 +48,9 @@ Run the following command in PostgreSQL shell:
 ```sql
 CREATE DATABASE myproject; 
 CREATE USER django_admin WITH PASSWORD 'password';
-ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
-ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
-ALTER ROLE myprojectuser SET timezone TO 'UTC';
+ALTER ROLE django_admin SET client_encoding TO 'utf8';
+ALTER ROLE django_admin SET default_transaction_isolation TO 'read committed';
+ALTER ROLE django_admin SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE myproject TO django_admin;
 ```
 
