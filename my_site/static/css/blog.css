@@ -1,0 +1,73 @@
+body{
+   background:#eef0f1;
+}
+
+.jumbotron{
+    background:#7e8d9b;
+    border-radius:0px;
+}
+
+
+.btn-black {
+    padding: 10px 10px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+}
+
+.btn-black:hover, .btn-black:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-black-outline {
+    padding: 5px 5px;
+    background-color: #fff;
+    border: 1px solid #333;
+    color: #000;
+    transition: .1s;
+}
+
+.btn-black-outline:hover, .btn-black-outline:focus {
+    border-radius: 0;
+    background-color: #333;
+    color: #f1f1f1;
+}
+.btn-white{
+    background-color: #fff;
+    color: #000 !important;
+    transition: .1s;
+}
+
+.btn-white:hover, .btn-white:focus {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+input[type=text], input[type=email], input[type=password] {
+  border: none;
+  border-bottom: 2px solid #333;
+}
+
+.fakeimg {
+    height: 200px;
+    background: #aaa;
+}
+
+.navbar-brand{
+    background: #fff;
+    padding: 5px;
+    font-size: 22px;
+    border-radius: 5px;
+    color: #000 !important;
+}
+
+hr{
+   background:#000;
+}
+
+.title{
+    color: #000 !important;
+}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block head_title %}Create Post{% endblock head_title %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+    <div class="row">
+    <div class="col-sm-8 mt-4">
+        <form class="login" method="POST">
+            {% csrf_token %}
+            {{ form | crispy}}
+            <button class="btn btn-black btn-block" type="submit">Post</button>
+        </form>
+    </div>
+    {% block sidebar %}
+      {% include "sidebar.html" %}
+    {% endblock sidebar %}
+  </div>
+{% endblock %}

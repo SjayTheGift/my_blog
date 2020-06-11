@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block head_title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}"/>
+    <style>
+        body{
+   background:#eef0f1;
+}
+
+.jumbotron{
+    background:#7e8d9b;
+    border-radius:0px;
+}
+
+
+.btn-black {
+    padding: 10px 10px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+}
+
+.btn-black:hover, .btn-black:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-black-outline {
+    padding: 5px 5px;
+    background-color: #fff;
+    border: 1px solid #333;
+    color: #000;
+    transition: .1s;
+}
+
+.btn-black-outline:hover, .btn-black-outline:focus {
+    border-radius: 0;
+    background-color: #333;
+    color: #f1f1f1;
+}
+.btn-white{
+    background-color: #fff;
+    color: #000 !important;
+    transition: .1s;
+}
+
+.btn-white:hover, .btn-white:focus {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+input[type=text], input[type=email], input[type=password] {
+  border: none;
+  border-bottom: 2px solid #333;
+}
+
+.fakeimg {
+    height: 200px;
+    background: #aaa;
+}
+
+.navbar-brand{
+    background: #fff;
+    padding: 5px;
+    font-size: 22px;
+    border-radius: 5px;
+    color: #000 !important;
+}
+
+hr{
+   background:#000;
+}
+
+.title{
+    color: #000 !important;
+}
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" href="{% url  'blog:post_list' %}">DEV</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+<!--    <ul class="navbar-nav">-->
+<!--      <li class="nav-item">-->
+<!--        <form class="form-inline">-->
+<!--            <input type="text" class="form-control mr-sm-2" placeholder="Search">-->
+<!--        </form>-->
+<!--      </li>-->
+<!--    </ul>-->
+     <ul class="navbar-nav ml-auto">
+         <li>
+             <a class="nav-link btn-white" href="{% url 'blog:create_post' %}">Write Post</a>
+         </li>
+       {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{% url 'account_email' %}" class="nav-link"><i class="mdi mdi-tooltip-edit" aria-hidden="true"></i> Change E-mail</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'account_logout' %}" class="nav-link"><i class="mdi mdi-logout" aria-hidden="true"></i> Sign Out</a>
+        </li>
+       {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_login' %}"><i class="mdi mdi-login" aria-hidden="true"></i> Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_signup' %}"><i class="mdi mdi-pen" aria-hidden="true"></i> Register</a>
+      </li>
+       {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<div class="container" style="margin-top:20px">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+<!--<div class="jumbotron text-center" style="margin-bottom:0">-->
+<!--  <p>Copyright &copy Esethu Jonas 2020</p>-->
+<!--</div>-->
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

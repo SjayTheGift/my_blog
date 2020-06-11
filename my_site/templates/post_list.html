@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block head_title %}My Blog{% endblock head_title %}
+{% block content %}
+{% load static %}
+  <div class="row">
+    <div class="col-sm-8 mb-4">
+        {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+        {% endif %}
+     {% for post in post_list %}
+        <h2><a href="{% url 'blog:post_detail' post.slug %}" class="title">{{ post.title | capfirst }}</a></h2>
+        <p> Published by <span class="pr-4"><i class="mdi mdi-briefcase"></i> {{ post.author }}</span>
+            <span class="pr-4"><i class="mdi mdi-calendar" aria-hidden="true"></i> {{ post.created |date:"F d, Y" }}</span>
+            {% with post.comments.count as total_comments %}
+            <span class="pr-4"><i class="mdi mdi-comment-multiple-outline" aria-hidden="true"></i>
+                {{ total_comments }} comment{{ total_comments|pluralize }}
+            </span>
+            {% endwith %}
+        </p>
+<!--          <div class="fakeimg">Fake Image</div>-->
+          <p>{{ post.body|truncatewords:30|linebreaks }}</p>
+        <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-black-outline mb-4">
+            Read More <i class="mdi mdi-arrow-right"></i>
+        </a>
+        <hr class="mt-4 mb-4 hr-size">
+     {% endfor %}
+    </div>
+      {% block sidebar %}
+        {% include "sidebar.html" %}
+      {% endblock sidebar %}
+  </div>
+{% endblock %}
+
+
